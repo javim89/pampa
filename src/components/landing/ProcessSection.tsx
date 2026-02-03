@@ -1,3 +1,5 @@
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+
 interface ProcessStepProps {
   number: string;
   title: string;
@@ -12,10 +14,10 @@ function ProcessStep({
   isActive = false,
 }: ProcessStepProps) {
   return (
-    <div className="flex gap-4 md:gap-5">
+    <div className="flex gap-4 md:gap-5 group">
       {/* Number Circle */}
       <div
-        className={`flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full flex-shrink-0 ${
+        className={`flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${
           isActive ? "bg-[var(--color-primary)]" : "bg-[#F0F2F5]"
         }`}
       >
@@ -42,10 +44,12 @@ function ProcessStep({
 }
 
 export function ProcessSection() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
+
   return (
-    <section id="process" className="flex flex-col lg:flex-row min-h-[500px] lg:h-[600px] bg-white">
+    <section ref={ref} id="process" className="flex flex-col lg:flex-row min-h-[500px] lg:h-[600px] bg-white">
       {/* Left Side - Image with Overlay */}
-      <div className="relative w-full lg:w-[600px] h-[300px] sm:h-[400px] lg:h-full overflow-hidden bg-[var(--color-primary)]">
+      <div className={`relative w-full lg:w-[600px] h-[300px] sm:h-[400px] lg:h-full overflow-hidden bg-[var(--color-primary)] ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
         {/* Background Image */}
         <img
           src="https://images.unsplash.com/photo-1765729003706-355ca161736d?w=800&q=80"
@@ -79,7 +83,7 @@ export function ProcessSection() {
       </div>
 
       {/* Right Side - Process Steps */}
-      <div className="flex flex-col gap-6 md:gap-8 flex-1 justify-center px-4 sm:px-8 lg:px-[60px] py-8 md:py-12 lg:py-[60px]">
+      <div className={`flex flex-col gap-6 md:gap-8 flex-1 justify-center px-4 sm:px-8 lg:px-[60px] py-8 md:py-12 lg:py-[60px] ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
         {/* Header */}
         <div className="flex flex-col gap-3 md:gap-4">
           {/* Label */}
@@ -98,22 +102,28 @@ export function ProcessSection() {
 
         {/* Steps */}
         <div className="flex flex-col gap-5 md:gap-6">
-          <ProcessStep
-            number="01"
-            title="Initial Consultation"
-            description="We assess your investment goals and provide a preliminary analysis of the Argentine market opportunity."
-            isActive
-          />
-          <ProcessStep
-            number="02"
-            title="Strategic Planning"
-            description="Our team develops a customized legal and tax structure optimized for your specific investment."
-          />
-          <ProcessStep
-            number="03"
-            title="Implementation"
-            description="We execute the plan, managing all regulatory filings and documentation for a smooth market entry."
-          />
+          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+            <ProcessStep
+              number="01"
+              title="Initial Consultation"
+              description="We assess your investment goals and provide a preliminary analysis of the Argentine market opportunity."
+              isActive
+            />
+          </div>
+          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
+            <ProcessStep
+              number="02"
+              title="Strategic Planning"
+              description="Our team develops a customized legal and tax structure optimized for your specific investment."
+            />
+          </div>
+          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '500ms', animationFillMode: 'both' }}>
+            <ProcessStep
+              number="03"
+              title="Implementation"
+              description="We execute the plan, managing all regulatory filings and documentation for a smooth market entry."
+            />
+          </div>
         </div>
       </div>
     </section>

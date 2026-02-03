@@ -4,12 +4,14 @@ import {
   BriefcaseIcon,
   ArrowRightIcon,
 } from "./Icons";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
   variant?: "light" | "dark";
+  delay?: number;
 }
 
 function ServiceCard({
@@ -17,20 +19,22 @@ function ServiceCard({
   title,
   description,
   variant = "light",
+  delay = 0,
 }: ServiceCardProps) {
   const isDark = variant === "dark";
 
   return (
     <div
-      className={`flex flex-col gap-5 md:gap-6 p-6 md:p-8 rounded-2xl ${
+      className={`group flex flex-col gap-5 md:gap-6 p-6 md:p-8 rounded-2xl card-hover ${
         isDark
           ? "bg-[var(--color-primary)]"
           : "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
       }`}
+      style={{ animationDelay: `${delay}ms` }}
     >
       {/* Icon */}
       <div
-        className={`flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-[14px] ${
+        className={`flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-[14px] transition-transform duration-300 group-hover:scale-110 ${
           isDark ? "bg-[#FFFFFF20]" : "bg-[var(--color-primary)]"
         }`}
       >
@@ -65,25 +69,28 @@ function ServiceCard({
         }`}
       >
         Learn more
-        <ArrowRightIcon size={14} />
+        <ArrowRightIcon size={14} className="link-arrow" />
       </a>
     </div>
   );
 }
 
 export function ServicesSection() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
+
   return (
     <section
+      ref={ref}
       id="services"
       className="relative bg-[var(--color-background-section)] overflow-hidden"
     >
       {/* Decorative Circle */}
-      <div className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-[#1A2A3A05] right-[-100px] md:right-[-50px] top-[-50px] hidden sm:block" />
+      <div className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-[#1A2A3A05] right-[-100px] md:right-[-50px] top-[-50px] hidden sm:block animate-pulse-slow" />
 
       {/* Content */}
       <div className="relative flex flex-col gap-8 md:gap-12 px-4 sm:px-8 lg:px-[120px] py-12 md:py-16 lg:py-20 max-w-[1440px]">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <div className={`flex flex-col sm:flex-row sm:items-end justify-between gap-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
           <div className="flex flex-col gap-3 md:gap-4 lg:w-[500px]">
             {/* Label */}
             <div className="flex items-center gap-2">
@@ -102,40 +109,47 @@ export function ServicesSection() {
           {/* View All Button - Hidden on mobile */}
           <a
             href="#"
-            className="hidden sm:flex items-center gap-2 px-5 md:px-6 py-3 md:py-3.5 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors whitespace-nowrap"
+            className="group hidden sm:flex items-center gap-2 px-5 md:px-6 py-3 md:py-3.5 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all whitespace-nowrap"
           >
             View All Services
-            <ArrowRightIcon size={16} />
+            <ArrowRightIcon size={16} className="link-arrow" />
           </a>
         </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          <ServiceCard
-            icon={<FileTextIcon size={22} />}
-            title="Legal Advisory"
-            description="Complete legal structuring for market entry, corporate formation, contract drafting and regulatory compliance."
-          />
-          <ServiceCard
-            icon={<CalculatorIcon size={22} />}
-            title="Tax Structuring"
-            description="Strategic tax planning, treaty optimization and compliance management for international investors."
-            variant="dark"
-          />
-          <ServiceCard
-            icon={<BriefcaseIcon size={22} />}
-            title="Investment Support"
-            description="End-to-end support from due diligence to closing, ensuring smooth execution of your investment."
-          />
+          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+            <ServiceCard
+              icon={<FileTextIcon size={22} />}
+              title="Legal Advisory"
+              description="Complete legal structuring for market entry, corporate formation, contract drafting and regulatory compliance."
+            />
+          </div>
+          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+            <ServiceCard
+              icon={<CalculatorIcon size={22} />}
+              title="Tax Structuring"
+              description="Strategic tax planning, treaty optimization and compliance management for international investors."
+              variant="dark"
+            />
+          </div>
+          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+            <ServiceCard
+              icon={<BriefcaseIcon size={22} />}
+              title="Investment Support"
+              description="End-to-end support from due diligence to closing, ensuring smooth execution of your investment."
+            />
+          </div>
         </div>
 
         {/* View All Button - Mobile only */}
         <a
           href="#"
-          className="flex sm:hidden items-center justify-center gap-2 px-5 py-3 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors"
+          className={`group flex sm:hidden items-center justify-center gap-2 px-5 py-3 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+          style={{ animationDelay: '400ms', animationFillMode: 'both' }}
         >
           View All Services
-          <ArrowRightIcon size={16} />
+          <ArrowRightIcon size={16} className="link-arrow" />
         </a>
       </div>
     </section>

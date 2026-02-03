@@ -1,10 +1,16 @@
 import { ArrowRightIcon } from "./Icons";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 export function IntroSection() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
+
   return (
-    <section className="flex flex-col lg:flex-row gap-8 lg:gap-20 px-4 sm:px-8 lg:px-[120px] py-12 md:py-16 lg:py-20 bg-[var(--color-background)]">
+    <section
+      ref={ref}
+      className="flex flex-col lg:flex-row gap-8 lg:gap-20 px-4 sm:px-8 lg:px-[120px] py-12 md:py-16 lg:py-20 bg-[var(--color-background)]"
+    >
       {/* Left Column */}
-      <div className="flex flex-col gap-4 md:gap-6 lg:w-[500px]">
+      <div className={`flex flex-col gap-4 md:gap-6 lg:w-[500px] ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
         {/* Label */}
         <div className="flex items-center gap-2">
           <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
@@ -20,7 +26,7 @@ export function IntroSection() {
       </div>
 
       {/* Right Column */}
-      <div className="flex flex-col gap-4 md:gap-5 flex-1">
+      <div className={`flex flex-col gap-4 md:gap-5 flex-1 ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '150ms', animationFillMode: 'both' }}>
         <p className="text-base md:text-[17px] leading-[1.8] text-[var(--color-text-secondary)] font-primary">
           Investing in Argentina requires navigating a complex legal, tax and
           regulatory environment. Without proper local guidance, foreign
@@ -36,10 +42,10 @@ export function IntroSection() {
         {/* Link */}
         <a
           href="#about"
-          className="flex items-center gap-2 pt-2 md:pt-3 text-sm md:text-[15px] font-semibold text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
+          className="group flex items-center gap-2 pt-2 md:pt-3 text-sm md:text-[15px] font-semibold text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
           Learn more about our approach
-          <ArrowRightIcon size={18} />
+          <ArrowRightIcon size={18} className="link-arrow" />
         </a>
       </div>
     </section>

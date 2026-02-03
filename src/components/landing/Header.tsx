@@ -101,38 +101,43 @@ export function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="absolute top-full left-0 right-0 flex flex-col bg-white border-b border-[var(--color-border)] shadow-lg lg:hidden z-50">
+        <nav className="absolute top-full left-0 right-0 flex flex-col bg-white border-b border-[var(--color-border)] shadow-lg lg:hidden z-50 mobile-menu-enter">
           <a
             href="#services"
-            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100"
+            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100 animate-fade-in-up"
+            style={{ animationDelay: '50ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
             Services
           </a>
           <a
             href="#process"
-            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100"
+            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100 animate-fade-in-up"
+            style={{ animationDelay: '100ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
             Process
           </a>
           <a
             href="#about"
-            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100"
+            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100 animate-fade-in-up"
+            style={{ animationDelay: '150ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
             About
           </a>
           <a
             href="#testimonials"
-            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100"
+            className="px-4 py-4 text-sm font-medium text-[var(--color-text-primary)] font-primary hover:bg-gray-50 transition-colors border-b border-gray-100 animate-fade-in-up"
+            style={{ animationDelay: '200ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
             Testimonials
           </a>
           <a
             href="#contact"
-            className="m-4 flex items-center justify-center px-5 py-3 text-sm font-medium text-[var(--color-text-light)] bg-[var(--color-primary)] rounded-md font-primary"
+            className="m-4 flex items-center justify-center px-5 py-3 text-sm font-medium text-[var(--color-text-light)] bg-[var(--color-primary)] rounded-md font-primary btn-hover animate-fade-in-up"
+            style={{ animationDelay: '250ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
             Contact
