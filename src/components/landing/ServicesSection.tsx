@@ -68,7 +68,7 @@ function ServiceCard({
           isDark ? "text-white" : "text-[var(--color-text-primary)]"
         }`}
       >
-        Learn more
+        Ver más
         <ArrowRightIcon size={14} className="link-arrow" />
       </a>
     </div>
@@ -96,13 +96,13 @@ export function ServicesSection() {
             <div className="flex items-center gap-2">
               <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
               <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-                OUR SERVICES
+                MODELO DE ASESORAMIENTO
               </span>
             </div>
 
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold leading-[1.2] text-[var(--color-text-primary)] font-primary">
-              Comprehensive Advisory Solutions
+              Asesoramiento legal y fiscal integrado.
             </h2>
           </div>
 
@@ -111,7 +111,7 @@ export function ServicesSection() {
             href="#"
             className="group hidden sm:flex items-center gap-2 px-5 md:px-6 py-3 md:py-3.5 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all whitespace-nowrap"
           >
-            View All Services
+            Ver todos los servicios
             <ArrowRightIcon size={16} className="link-arrow" />
           </a>
         </div>
@@ -121,23 +121,23 @@ export function ServicesSection() {
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
             <ServiceCard
               icon={<FileTextIcon size={22} />}
-              title="Legal Advisory"
-              description="Complete legal structuring for market entry, corporate formation, contract drafting and regulatory compliance."
+              title="Argentina Investment Assessment"
+              description="Diagnóstico integral del entorno legal y fiscal aplicable a su inversión, con identificación de oportunidades y riesgos desde el inicio."
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
             <ServiceCard
               icon={<CalculatorIcon size={22} />}
-              title="Tax Structuring"
-              description="Strategic tax planning, treaty optimization and compliance management for international investors."
+              title="Capital Entry & Entity Setup"
+              description="Estructuración societaria y fiscal para el ingreso de capital, incluyendo constitución de entidades, contratos y habilitaciones regulatorias."
               variant="dark"
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <ServiceCard
               icon={<BriefcaseIcon size={22} />}
-              title="Investment Support"
-              description="End-to-end support from due diligence to closing, ensuring smooth execution of your investment."
+              title="Ongoing Legal & Tax Support"
+              description="Acompañamiento continuo en materia legal y fiscal durante toda la vida del proyecto: cumplimiento, contratos, reorganizaciones y contingencias."
             />
           </div>
         </div>
@@ -148,7 +148,7 @@ export function ServicesSection() {
           className={`group flex sm:hidden items-center justify-center gap-2 px-5 py-3 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
           style={{ animationDelay: '400ms', animationFillMode: 'both' }}
         >
-          View All Services
+          Ver todos los servicios
           <ArrowRightIcon size={16} className="link-arrow" />
         </a>
       </div>

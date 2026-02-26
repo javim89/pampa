@@ -21,22 +21,18 @@ export function IntroSection() {
 
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold leading-[1.2] text-[var(--color-text-primary)] font-primary">
-          We Simplify Complex Investment Journeys
+          Invertir en Argentina requiere contar desde el inicio con la estructura legal y fiscal adecuada.
         </h2>
       </div>
 
       {/* Right Column */}
       <div className={`flex flex-col gap-4 md:gap-5 flex-1 ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '150ms', animationFillMode: 'both' }}>
         <p className="text-base md:text-[17px] leading-[1.8] text-[var(--color-text-secondary)] font-primary">
-          Investing in Argentina requires navigating a complex legal, tax and
-          regulatory environment. Without proper local guidance, foreign
-          investors often face uncertainty, inefficiencies and avoidable risks.
+          Operar en Argentina implica navegar un entorno legal, fiscal y regulatorio complejo y en permanente evolución. Sin un asesoramiento local adecuado, los inversores extranjeros enfrentan incertidumbre, ineficiencias y riesgos evitables.
         </p>
 
         <p className="text-base md:text-[17px] leading-[1.8] text-[var(--color-text-secondary)] font-primary">
-          Pampa Investment Advisory acts as your strategic partner, combining
-          legal and tax expertise with a pragmatic understanding of business
-          operations in Argentina.
+          Pampa Investment Advisory actúa como su socio estratégico, integrando experiencia legal y fiscal con un entendimiento pragmático del entorno de negocios en Argentina.
         </p>
 
         {/* Link */}
@@ -44,7 +40,7 @@ export function IntroSection() {
           href="#about"
           className="group flex items-center gap-2 pt-2 md:pt-3 text-sm md:text-[15px] font-semibold text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Learn more about our approach
+          Conocer más sobre nuestro enfoque
           <ArrowRightIcon size={18} className="link-arrow" />
         </a>
       </div>

@@ -60,12 +60,11 @@ export function ProcessSection() {
         {/* Content Overlay */}
         <div className="relative flex flex-col gap-6 md:gap-8 justify-center h-full px-4 sm:px-8 lg:px-[50px] py-8 md:py-12 lg:py-[60px]">
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.2] text-white font-primary max-w-[400px]">
-            We fight for your success
+            Un enfoque estructurado para cada etapa de su inversión.
           </h3>
 
           <p className="text-sm md:text-base leading-[1.7] text-white opacity-80 max-w-[400px] font-primary">
-            Our structured approach ensures clarity at every step of your
-            investment journey in Argentina.
+            Nuestro modelo de trabajo garantiza claridad legal y fiscal en cada paso del proceso de inversión en Argentina.
           </p>
 
           {/* Stats */}
@@ -90,13 +89,13 @@ export function ProcessSection() {
           <div className="flex items-center gap-2">
             <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
             <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-              OUR PROCESS
+              CÓMO TRABAJAMOS
             </span>
           </div>
 
           {/* Title */}
           <h2 className="text-2xl md:text-[32px] font-bold text-[var(--color-text-primary)] font-primary">
-            How We Work
+            Cómo Trabajamos
           </h2>
         </div>
 
@@ -105,23 +104,23 @@ export function ProcessSection() {
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <ProcessStep
               number="01"
-              title="Initial Consultation"
-              description="We assess your investment goals and provide a preliminary analysis of the Argentine market opportunity."
+              title="Diagnóstico Inicial"
+              description="Evaluamos sus objetivos de inversión y realizamos un análisis preliminar del entorno legal y fiscal aplicable en Argentina."
               isActive
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
             <ProcessStep
               number="02"
-              title="Strategic Planning"
-              description="Our team develops a customized legal and tax structure optimized for your specific investment."
+              title="Estructuración Legal y Fiscal"
+              description="Desarrollamos la estructura societaria y fiscal óptima para su inversión, contemplando eficiencia, cumplimiento y escalabilidad."
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '500ms', animationFillMode: 'both' }}>
             <ProcessStep
               number="03"
-              title="Implementation"
-              description="We execute the plan, managing all regulatory filings and documentation for a smooth market entry."
+              title="Implementación y Acompañamiento"
+              description="Ejecutamos el plan y gestionamos todos los trámites regulatorios, brindando soporte continuo durante la operación del proyecto."
             />
           </div>
         </div>

@@ -19,8 +19,7 @@ export function Footer() {
 
           {/* Tagline */}
           <p className="text-sm leading-[1.7] text-white opacity-60 font-primary max-w-[300px]">
-            Boutique advisory firm providing integrated legal and tax services
-            to foreign investors in Argentina.
+            Firma boutique de asesoramiento legal y fiscal integrado para inversores extranjeros en Argentina.
           </p>
 
           {/* Social Links */}
@@ -45,63 +44,63 @@ export function Footer() {
           {/* Services Column */}
           <div className="flex flex-col gap-4">
             <span className="text-sm font-semibold text-white font-primary">
-              Services
+              Servicios
             </span>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Legal Advisory
+              Argentina Investment Assessment
             </a>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Tax Structuring
+              Capital Entry & Entity Setup
             </a>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Investment Support
+              Ongoing Legal & Tax Support
             </a>
           </div>
 
           {/* Company Column */}
           <div className="flex flex-col gap-4">
             <span className="text-sm font-semibold text-white font-primary">
-              Company
+              Empresa
             </span>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              About Us
+              Quiénes somos
             </a>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Our Process
+              Cómo trabajamos
             </a>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Contact
+              Contacto
             </a>
           </div>
 
           {/* Contact Column */}
           <div className="flex flex-col gap-4 col-span-2 sm:col-span-1">
             <span className="text-sm font-semibold text-white font-primary">
-              Contact
+              Contacto
             </span>
             <a
-              href="mailto:info@pampainvestment.com"
+              href="mailto:info@pampainvestmentadvisory.com"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              info@pampainvestment.com
+              info@pampainvestmentadvisory.com
             </a>
             <span className="text-sm text-white opacity-60 font-primary">
               Buenos Aires, Argentina
@@ -116,7 +115,7 @@ export function Footer() {
       {/* Bottom Section */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <span className="text-xs md:text-[13px] text-white opacity-50 font-primary text-center sm:text-left">
-          &copy; 2025 Pampa Investment Advisory. All rights reserved.
+          &copy; 2025 Pampa Investment Advisory. Todos los derechos reservados.
         </span>
 
         <div className="flex gap-4 md:gap-6">
@@ -124,13 +123,13 @@ export function Footer() {
             href="#"
             className="text-xs md:text-[13px] text-white opacity-50 font-primary hover:opacity-100 transition-opacity"
           >
-            Privacy Policy
+            Política de Privacidad
           </a>
           <a
             href="#"
             className="text-xs md:text-[13px] text-white opacity-50 font-primary hover:opacity-100 transition-opacity"
           >
-            Terms of Service
+            Términos de Servicio
           </a>
         </div>
       </div>

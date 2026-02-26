@@ -41,23 +41,22 @@ export function Hero() {
 
           {/* Title */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.1] text-[var(--color-text-primary)] font-primary animate-fade-in-up" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-            Navigate Legal Waters, Secure Your Investment
+            Claridad legal y fiscal para empresas que invierten en Argentina.
           </h1>
 
           {/* Subtitle */}
           <p className="text-base md:text-lg leading-[1.7] text-[var(--color-text-secondary)] opacity-80 max-w-[480px] font-primary animate-fade-in-up" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
-            Expert legal and tax advisory for foreign investors entering
-            Argentina. We transform complexity into clarity.
+            Plataforma senior de asesoramiento legal y fiscal diseñada para estructurar, implementar y acompañar inversión extranjera en Argentina.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 animate-fade-in-up" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
             <button className="flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg font-primary font-medium text-sm md:text-[15px] btn-hover hover:opacity-90 transition-all">
-              Schedule Consultation
+              Agendar una consulta confidencial
               <ArrowRightIcon size={16} />
             </button>
             <button className="flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 border border-[#1A2A3A20] rounded-lg font-primary font-medium text-sm md:text-[15px] text-[var(--color-text-primary)] btn-hover hover:bg-gray-50 transition-all">
-              Learn More
+              Conocer más
             </button>
           </div>
 

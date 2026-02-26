@@ -19,22 +19,21 @@ export function CTASection() {
         {/* Left Content */}
         <div className={`flex flex-col gap-5 md:gap-6 lg:w-[550px] text-center lg:text-left ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold leading-[1.2] text-white font-primary">
-            Ready to Invest in Argentina?
+            ¿Está evaluando operar en Argentina?
           </h2>
 
           <p className="text-sm md:text-[17px] leading-[1.7] text-white opacity-80 font-primary">
-            Schedule a confidential consultation and explore how to structure
-            your investment with clarity and confidence.
+            Agende una consulta confidencial y explore cómo estructurar su inversión con claridad y seguridad jurídica.
           </p>
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4">
             <button className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 bg-white text-[var(--color-primary)] rounded-lg font-primary font-medium text-sm md:text-[15px] btn-hover hover:opacity-90 transition-all">
-              Schedule Consultation
+              Agendar consulta
               <ArrowRightIcon size={16} />
             </button>
             <button className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 border border-[#FFFFFF40] rounded-lg font-primary font-medium text-sm md:text-[15px] text-white btn-hover hover:bg-white/10 transition-all">
-              Download Guide
+              Descargar guía
             </button>
           </div>
         </div>
@@ -43,7 +42,7 @@ export function CTASection() {
         <div className={`w-full sm:w-[350px] ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
           <div className="flex flex-col gap-4 md:gap-5 px-5 md:px-7 py-6 md:py-7 bg-white rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.12)] card-hover">
             <h3 className="text-base md:text-lg font-semibold text-[var(--color-text-primary)] font-primary">
-              Quick Contact
+              Contacto
             </h3>
 
             {/* Email */}
@@ -53,7 +52,7 @@ export function CTASection() {
                 size={18}
               />
               <span className="text-sm text-[var(--color-text-secondary)] font-primary truncate group-hover:text-[var(--color-primary)] transition-colors">
-                info@pampainvestment.com
+                info@pampainvestmentadvisory.com
               </span>
             </div>
 

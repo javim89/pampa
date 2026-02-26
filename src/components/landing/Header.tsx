@@ -62,31 +62,31 @@ export function Header() {
           href="#services"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Services
+          Servicios
         </a>
         <a
           href="#process"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Process
+          Proceso
         </a>
         <a
           href="#about"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          About
+          Nosotros
         </a>
         <a
           href="#testimonials"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Testimonials
+          Testimonios
         </a>
         <a
           href="#contact"
           className="flex items-center justify-center px-5 py-3 text-sm font-medium text-[var(--color-text-light)] bg-[var(--color-primary)] rounded-md font-primary hover:opacity-90 transition-opacity"
         >
-          Contact
+          Contacto
         </a>
       </nav>
 
@@ -108,7 +108,7 @@ export function Header() {
             style={{ animationDelay: '50ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Services
+            Servicios
           </a>
           <a
             href="#process"
@@ -116,7 +116,7 @@ export function Header() {
             style={{ animationDelay: '100ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Process
+            Proceso
           </a>
           <a
             href="#about"
@@ -124,7 +124,7 @@ export function Header() {
             style={{ animationDelay: '150ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            About
+            Nosotros
           </a>
           <a
             href="#testimonials"
@@ -132,7 +132,7 @@ export function Header() {
             style={{ animationDelay: '200ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Testimonials
+            Testimonios
           </a>
           <a
             href="#contact"
@@ -140,7 +140,7 @@ export function Header() {
             style={{ animationDelay: '250ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Contact
+            Contacto
           </a>
         </nav>
       )}
