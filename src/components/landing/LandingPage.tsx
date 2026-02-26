@@ -3,6 +3,7 @@ import { Hero } from "./Hero";
 import { IntroSection } from "./IntroSection";
 import { ServicesSection } from "./ServicesSection";
 import { ProcessSection } from "./ProcessSection";
+import { IndustriesSection } from "./IndustriesSection";
 import { TestimonialsSection } from "./TestimonialsSection";
 import { CTASection } from "./CTASection";
 import { Footer } from "./Footer";
@@ -16,6 +17,7 @@ export function LandingPage() {
         <IntroSection />
         <ServicesSection />
         <ProcessSection />
+        <IndustriesSection />
         <TestimonialsSection />
         <CTASection />
       </main>
