@@ -1,7 +1,11 @@
 import { LinkedinIcon, TwitterIcon } from "./Icons";
 import logoLight from "../../assets/logo-light.svg";
+import { useLanguage } from "../../context/LanguageContext";
+import type { Language } from "../../i18n/translations";
 
 export function Footer() {
+  const { t, language, setLanguage } = useLanguage();
+
   return (
     <footer className="flex flex-col gap-8 md:gap-12 px-4 sm:px-8 lg:px-[120px] pt-10 md:pt-[60px] pb-8 md:pb-10 bg-[var(--color-background-dark)]">
       {/* Top Section */}
@@ -19,7 +23,7 @@ export function Footer() {
 
           {/* Tagline */}
           <p className="text-sm leading-[1.7] text-white opacity-60 font-primary max-w-[300px]">
-            Firma boutique de asesoramiento legal y fiscal integrado para inversores extranjeros en Argentina.
+            {t.footer.tagline}
           </p>
 
           {/* Social Links */}
@@ -40,11 +44,11 @@ export function Footer() {
         </div>
 
         {/* Links Columns */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-20">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10 lg:gap-16">
           {/* Services Column */}
           <div className="flex flex-col gap-4">
             <span className="text-sm font-semibold text-white font-primary">
-              Servicios
+              {t.footer.servicesCol}
             </span>
             <a
               href="#"
@@ -69,32 +73,54 @@ export function Footer() {
           {/* Company Column */}
           <div className="flex flex-col gap-4">
             <span className="text-sm font-semibold text-white font-primary">
-              Empresa
+              {t.footer.companyCol}
             </span>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Quiénes somos
+              {t.footer.aboutUs}
             </a>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Cómo trabajamos
+              {t.footer.howWeWork}
             </a>
             <a
               href="#"
               className="text-sm text-white opacity-60 font-primary hover:opacity-100 transition-opacity"
             >
-              Contacto
+              {t.footer.contact}
             </a>
+          </div>
+
+          {/* Language Column */}
+          <div className="flex flex-col gap-4">
+            <span className="text-sm font-semibold text-white font-primary">
+              {t.footer.languageCol}
+            </span>
+            {(["es", "en"] as Language[]).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLanguage(lang)}
+                className={`text-left text-sm font-primary transition-opacity ${language === lang
+                    ? "text-white opacity-100 font-semibold"
+                    : "text-white opacity-60 hover:opacity-100"
+                  }`}
+              >
+                {lang === "es" ? t.footer.spanish : t.footer.english}
+                {language === lang && (
+                  <span className="ml-1.5 inline-block w-1.5 h-1.5 rounded-full bg-white align-middle" />
+                )}
+              </button>
+            ))}
           </div>
 
           {/* Contact Column */}
           <div className="flex flex-col gap-4 col-span-2 sm:col-span-1">
             <span className="text-sm font-semibold text-white font-primary">
-              Contacto
+              {t.footer.contactCol}
             </span>
             <a
               href="mailto:info@pampainvestmentadvisory.com"
@@ -106,6 +132,8 @@ export function Footer() {
               Buenos Aires, Argentina
             </span>
           </div>
+
+
         </div>
       </div>
 
@@ -115,7 +143,7 @@ export function Footer() {
       {/* Bottom Section */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <span className="text-xs md:text-[13px] text-white opacity-50 font-primary text-center sm:text-left">
-          &copy; 2025 Pampa Investment Advisory. Todos los derechos reservados.
+          © {new Date().getFullYear()} {t.footer.copyright}
         </span>
 
         <div className="flex gap-4 md:gap-6">
@@ -123,13 +151,13 @@ export function Footer() {
             href="#"
             className="text-xs md:text-[13px] text-white opacity-50 font-primary hover:opacity-100 transition-opacity"
           >
-            Política de Privacidad
+            {t.footer.privacy}
           </a>
           <a
             href="#"
             className="text-xs md:text-[13px] text-white opacity-50 font-primary hover:opacity-100 transition-opacity"
           >
-            Términos de Servicio
+            {t.footer.terms}
           </a>
         </div>
       </div>

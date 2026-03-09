@@ -1,5 +1,6 @@
 import { ZapIcon, PickaxeIcon, WheatIcon, CpuIcon } from "./Icons";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { useLanguage } from "../../context/LanguageContext";
 import energyImg from "../../assets/industries/energy.png";
 import miningImg from "../../assets/industries/mining.png";
 import agribusinessImg from "../../assets/industries/agribusiness.png";
@@ -57,31 +58,32 @@ function IndustryCard({
 
 export function IndustriesSection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
+  const { t } = useLanguage();
 
   const industries = [
     {
       image: energyImg,
       icon: <ZapIcon size={24} />,
-      title: "Energy",
-      description: "Oil, gas, and renewable energy projects with comprehensive regulatory support.",
+      title: t.industries.energy.title,
+      description: t.industries.energy.description,
     },
     {
       image: miningImg,
       icon: <PickaxeIcon size={24} />,
-      title: "Mining",
-      description: "Lithium, copper and precious metals extraction with environmental compliance.",
+      title: t.industries.mining.title,
+      description: t.industries.mining.description,
     },
     {
       image: agribusinessImg,
       icon: <WheatIcon size={24} />,
-      title: "Agribusiness",
-      description: "Agricultural production, export logistics and food processing ventures.",
+      title: t.industries.agribusiness.title,
+      description: t.industries.agribusiness.description,
     },
     {
       image: technologyImg,
       icon: <CpuIcon size={24} />,
-      title: "Technology",
-      description: "Software development, fintech startups and digital transformation initiatives.",
+      title: t.industries.technology.title,
+      description: t.industries.technology.description,
     },
   ];
 
@@ -99,20 +101,20 @@ export function IndustriesSection() {
         <div className="flex items-center gap-2">
           <div className="w-6 h-0.5 bg-[#1A2A3A]" />
           <span className="text-xs font-semibold tracking-[1.5px] text-[#1A2A3A] font-primary">
-            SECTORS
+            {t.industries.label}
           </span>
           <div className="w-6 h-0.5 bg-[#1A2A3A]" />
         </div>
 
         <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold leading-[1.2] text-[#1A2A3A] font-primary">
-          Industries We Serve
+          {t.industries.title}
         </h2>
 
         <p
           className={`text-base lg:text-[17px] leading-[1.7] text-[#2E3440]/80 font-primary ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
           style={{ animationDelay: "100ms", animationFillMode: "both" }}
         >
-          We provide specialized advisory services across Argentina's key economic sectors
+          {t.industries.subtitle}
         </p>
       </div>
 

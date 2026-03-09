@@ -1,3 +1,4 @@
+import { LanguageProvider } from "../../context/LanguageContext";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { IntroSection } from "./IntroSection";
@@ -10,18 +11,20 @@ import { Footer } from "./Footer";
 
 export function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--color-background)] font-primary">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <IntroSection />
-        <ServicesSection />
-        <ProcessSection />
-        <IndustriesSection />
-        <TestimonialsSection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="flex flex-col min-h-screen bg-[var(--color-background)] font-primary">
+        <Header />
+        <main className="flex-1">
+          <Hero />
+          <IntroSection />
+          <ServicesSection />
+          <ProcessSection />
+          <IndustriesSection />
+          <TestimonialsSection />
+          <CTASection />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }

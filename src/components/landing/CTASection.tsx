@@ -1,8 +1,10 @@
 import { ArrowRightIcon, MailIcon, MapPinIcon, PhoneIcon } from "./Icons";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function CTASection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
+  const { t } = useLanguage();
 
   return (
     <section
@@ -19,21 +21,21 @@ export function CTASection() {
         {/* Left Content */}
         <div className={`flex flex-col gap-5 md:gap-6 lg:w-[550px] text-center lg:text-left ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold leading-[1.2] text-white font-primary">
-            ¿Está evaluando operar en Argentina?
+            {t.cta.title}
           </h2>
 
           <p className="text-sm md:text-[17px] leading-[1.7] text-white opacity-80 font-primary">
-            Agende una consulta confidencial y explore cómo estructurar su inversión con claridad y seguridad jurídica.
+            {t.cta.subtitle}
           </p>
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4">
             <button className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 bg-white text-[var(--color-primary)] rounded-lg font-primary font-medium text-sm md:text-[15px] btn-hover hover:opacity-90 transition-all">
-              Agendar consulta
+              {t.cta.cta1}
               <ArrowRightIcon size={16} />
             </button>
             <button className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 border border-[#FFFFFF40] rounded-lg font-primary font-medium text-sm md:text-[15px] text-white btn-hover hover:bg-white/10 transition-all">
-              Descargar guía
+              {t.cta.cta2}
             </button>
           </div>
         </div>
@@ -42,7 +44,7 @@ export function CTASection() {
         <div className={`w-full sm:w-[350px] ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
           <div className="flex flex-col gap-4 md:gap-5 px-5 md:px-7 py-6 md:py-7 bg-white rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.12)] card-hover">
             <h3 className="text-base md:text-lg font-semibold text-[var(--color-text-primary)] font-primary">
-              Contacto
+              {t.cta.contactTitle}
             </h3>
 
             {/* Email */}

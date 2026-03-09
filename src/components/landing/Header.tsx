@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logoSvg from "../../assets/logo.svg";
+import { useLanguage } from "../../context/LanguageContext";
 
 function MenuIcon({ className = "" }: { className?: string }) {
   return (
@@ -44,6 +45,7 @@ function CloseIcon({ className = "" }: { className?: string }) {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="relative flex items-center justify-between h-16 md:h-20 px-4 sm:px-8 lg:px-[120px] bg-[var(--color-background)] border-b border-[var(--color-border)]">
@@ -62,31 +64,31 @@ export function Header() {
           href="#services"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Servicios
+          {t.header.services}
         </a>
         <a
           href="#process"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Proceso
+          {t.header.process}
         </a>
         <a
           href="#about"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Nosotros
+          {t.header.about}
         </a>
         <a
           href="#testimonials"
           className="text-sm font-medium text-[var(--color-text-primary)] font-primary hover:opacity-70 transition-opacity"
         >
-          Testimonios
+          {t.header.testimonials}
         </a>
         <a
           href="#contact"
           className="flex items-center justify-center px-5 py-3 text-sm font-medium text-[var(--color-text-light)] bg-[var(--color-primary)] rounded-md font-primary hover:opacity-90 transition-opacity"
         >
-          Contacto
+          {t.header.contact}
         </a>
       </nav>
 
@@ -108,7 +110,7 @@ export function Header() {
             style={{ animationDelay: '50ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Servicios
+            {t.header.services}
           </a>
           <a
             href="#process"
@@ -116,7 +118,7 @@ export function Header() {
             style={{ animationDelay: '100ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Proceso
+            {t.header.process}
           </a>
           <a
             href="#about"
@@ -124,7 +126,7 @@ export function Header() {
             style={{ animationDelay: '150ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Nosotros
+            {t.header.about}
           </a>
           <a
             href="#testimonials"
@@ -132,7 +134,7 @@ export function Header() {
             style={{ animationDelay: '200ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Testimonios
+            {t.header.testimonials}
           </a>
           <a
             href="#contact"
@@ -140,7 +142,7 @@ export function Header() {
             style={{ animationDelay: '250ms', animationFillMode: 'both' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Contacto
+            {t.header.contact}
           </a>
         </nav>
       )}

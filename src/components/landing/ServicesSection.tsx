@@ -5,11 +5,13 @@ import {
   ArrowRightIcon,
 } from "./Icons";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { useLanguage } from "../../context/LanguageContext";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
+  more: string;
   variant?: "light" | "dark";
   delay?: number;
 }
@@ -18,6 +20,7 @@ function ServiceCard({
   icon,
   title,
   description,
+  more,
   variant = "light",
   delay = 0,
 }: ServiceCardProps) {
@@ -68,7 +71,7 @@ function ServiceCard({
           isDark ? "text-white" : "text-[var(--color-text-primary)]"
         }`}
       >
-        Ver más
+        {more}
         <ArrowRightIcon size={14} className="link-arrow" />
       </a>
     </div>
@@ -77,6 +80,7 @@ function ServiceCard({
 
 export function ServicesSection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
+  const { t } = useLanguage();
 
   return (
     <section
@@ -96,13 +100,13 @@ export function ServicesSection() {
             <div className="flex items-center gap-2">
               <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
               <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-                MODELO DE ASESORAMIENTO
+                {t.services.label}
               </span>
             </div>
 
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold leading-[1.2] text-[var(--color-text-primary)] font-primary">
-              Asesoramiento legal y fiscal integrado.
+              {t.services.title}
             </h2>
           </div>
 
@@ -111,7 +115,7 @@ export function ServicesSection() {
             href="#"
             className="group hidden sm:flex items-center gap-2 px-5 md:px-6 py-3 md:py-3.5 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all whitespace-nowrap"
           >
-            Ver todos los servicios
+            {t.services.viewAll}
             <ArrowRightIcon size={16} className="link-arrow" />
           </a>
         </div>
@@ -121,23 +125,26 @@ export function ServicesSection() {
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
             <ServiceCard
               icon={<FileTextIcon size={22} />}
-              title="Argentina Investment Assessment"
-              description="Diagnóstico integral del entorno legal y fiscal aplicable a su inversión, con identificación de oportunidades y riesgos desde el inicio."
+              title={t.services.card1Title}
+              description={t.services.card1Desc}
+              more={t.services.more}
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
             <ServiceCard
               icon={<CalculatorIcon size={22} />}
-              title="Capital Entry & Entity Setup"
-              description="Estructuración societaria y fiscal para el ingreso de capital, incluyendo constitución de entidades, contratos y habilitaciones regulatorias."
+              title={t.services.card2Title}
+              description={t.services.card2Desc}
+              more={t.services.more}
               variant="dark"
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <ServiceCard
               icon={<BriefcaseIcon size={22} />}
-              title="Ongoing Legal & Tax Support"
-              description="Acompañamiento continuo en materia legal y fiscal durante toda la vida del proyecto: cumplimiento, contratos, reorganizaciones y contingencias."
+              title={t.services.card3Title}
+              description={t.services.card3Desc}
+              more={t.services.more}
             />
           </div>
         </div>
@@ -148,7 +155,7 @@ export function ServicesSection() {
           className={`group flex sm:hidden items-center justify-center gap-2 px-5 py-3 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
           style={{ animationDelay: '400ms', animationFillMode: 'both' }}
         >
-          Ver todos los servicios
+          {t.services.viewAll}
           <ArrowRightIcon size={16} className="link-arrow" />
         </a>
       </div>

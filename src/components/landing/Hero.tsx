@@ -1,4 +1,5 @@
 import { StarIcon, ScaleIcon, ArrowRightIcon } from "./Icons";
+import { useLanguage } from "../../context/LanguageContext";
 
 function ShieldCheckIcon({ className = "", size = 20 }: { className?: string; size?: number }) {
   return (
@@ -21,6 +22,8 @@ function ShieldCheckIcon({ className = "", size = 20 }: { className?: string; si
 }
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative bg-[var(--color-background-light)] overflow-hidden">
       {/* Decorative Circles */}
@@ -35,28 +38,28 @@ export function Hero() {
           <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-[#1A2A3A10] rounded-[20px] w-fit animate-fade-in-up" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
             <div className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse-slow" />
             <span className="text-xs md:text-[13px] font-medium text-[var(--color-text-primary)] font-primary">
-              Trusted by International Investors
+              {t.hero.badge}
             </span>
           </div>
 
           {/* Title */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.1] text-[var(--color-text-primary)] font-primary animate-fade-in-up" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-            Claridad legal y fiscal para empresas que invierten en Argentina.
+            {t.hero.title}
           </h1>
 
           {/* Subtitle */}
           <p className="text-base md:text-lg leading-[1.7] text-[var(--color-text-secondary)] opacity-80 max-w-[480px] font-primary animate-fade-in-up" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
-            Plataforma senior de asesoramiento legal y fiscal diseñada para estructurar, implementar y acompañar inversión extranjera en Argentina.
+            {t.hero.subtitle}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 animate-fade-in-up" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
             <button className="flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg font-primary font-medium text-sm md:text-[15px] btn-hover hover:opacity-90 transition-all">
-              Agendar una consulta confidencial
+              {t.hero.cta1}
               <ArrowRightIcon size={16} />
             </button>
             <button className="flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 md:py-4 border border-[#1A2A3A20] rounded-lg font-primary font-medium text-sm md:text-[15px] text-[var(--color-text-primary)] btn-hover hover:bg-gray-50 transition-all">
-              Conocer más
+              {t.hero.cta2}
             </button>
           </div>
 
@@ -67,7 +70,7 @@ export function Hero() {
                 15+
               </span>
               <span className="text-xs md:text-sm text-[var(--color-text-secondary)] opacity-70 font-primary">
-                Years Experience
+                {t.hero.yearsLabel}
               </span>
             </div>
             <div className="w-px h-10 md:h-[50px] bg-[#1A2A3A15]" />
@@ -76,7 +79,7 @@ export function Hero() {
                 200+
               </span>
               <span className="text-xs md:text-sm text-[var(--color-text-secondary)] opacity-70 font-primary">
-                Clients Served
+                {t.hero.clientsLabel}
               </span>
             </div>
           </div>
@@ -127,10 +130,10 @@ export function Hero() {
                 </div>
                 <div className="flex flex-col gap-0.5">
                   <span className="text-xs font-semibold text-[var(--color-text-primary)] font-primary">
-                    100% Secure
+                    {t.hero.secureLabel}
                   </span>
                   <span className="text-[10px] text-[var(--color-text-secondary)] opacity-60 font-primary">
-                    Confidential Advisory
+                    {t.hero.secureSubLabel}
                   </span>
                 </div>
               </div>
@@ -173,10 +176,10 @@ export function Hero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-semibold text-[var(--color-text-primary)] font-primary">
-                  100% Secure
+                  {t.hero.secureLabel}
                 </span>
                 <span className="text-xs text-[var(--color-text-secondary)] opacity-60 font-primary">
-                  Confidential Advisory
+                  {t.hero.secureSubLabel}
                 </span>
               </div>
             </div>
@@ -201,7 +204,7 @@ export function Hero() {
               style={{ left: '520px', top: '72px', width: '40px', height: '3px', animationDelay: '800ms', animationFillMode: 'both' }}
             />
 
-            {/* Rating Badge - positioned relative to heroRight, approximately x:210 from heroRight start, y:90 */}
+            {/* Rating Badge */}
             <div
               className="absolute flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.06)] animate-float"
               style={{ left: '210px', top: '90px' }}

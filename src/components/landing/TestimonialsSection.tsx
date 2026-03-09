@@ -1,5 +1,6 @@
 import { StarIcon } from "./Icons";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { useLanguage } from "../../context/LanguageContext";
 
 interface TestimonialCardProps {
   quote: string;
@@ -76,6 +77,7 @@ function TestimonialCard({
 
 export function TestimonialsSection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
+  const { t } = useLanguage();
 
   return (
     <section
@@ -89,14 +91,14 @@ export function TestimonialsSection() {
         <div className="flex items-center gap-2">
           <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
           <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-            TESTIMONIALS
+            {t.testimonials.label}
           </span>
           <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
         </div>
 
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold text-center text-[var(--color-text-primary)] font-primary">
-          Trusted by International Companies
+          {t.testimonials.title}
         </h2>
       </div>
 
@@ -104,7 +106,7 @@ export function TestimonialsSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
         <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
           <TestimonialCard
-            quote='"Navigating the Argentine market seemed impossible until we found Pampa. Their expertise transformed our entire approach."'
+            quote={t.testimonials.quote1}
             authorName="Sarah Mitchell"
             authorRole="CEO, TechVentures Inc"
             authorImage="https://images.unsplash.com/photo-1603484255049-ea4d0fe04fd3?w=200&q=80"
@@ -112,7 +114,7 @@ export function TestimonialsSection() {
         </div>
         <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
           <TestimonialCard
-            quote='"The best decision we made was partnering with Pampa. They truly understand both international business and local nuances."'
+            quote={t.testimonials.quote2}
             authorName="Carlos Rodriguez"
             authorRole="Managing Director, Global Invest"
             authorImage="https://images.unsplash.com/photo-1659353216718-faccabf8b036?w=200&q=80"
@@ -121,7 +123,7 @@ export function TestimonialsSection() {
         </div>
         <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
           <TestimonialCard
-            quote='"Professional, thorough and always available. Pampa made our expansion into Argentina seamless and risk-free."'
+            quote={t.testimonials.quote3}
             authorName="Emma Thompson"
             authorRole="CFO, Nordic Capital"
             authorImage="https://images.unsplash.com/photo-1504791635568-fa4993808e0a?w=200&q=80"

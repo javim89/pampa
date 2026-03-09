@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { useLanguage } from "../../context/LanguageContext";
 
 interface ProcessStepProps {
   number: string;
@@ -45,6 +46,7 @@ function ProcessStep({
 
 export function ProcessSection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
+  const { t } = useLanguage();
 
   return (
     <section ref={ref} id="process" className="flex flex-col lg:flex-row min-h-[500px] lg:h-[600px] bg-white">
@@ -60,11 +62,11 @@ export function ProcessSection() {
         {/* Content Overlay */}
         <div className="relative flex flex-col gap-6 md:gap-8 justify-center h-full px-4 sm:px-8 lg:px-[50px] py-8 md:py-12 lg:py-[60px]">
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.2] text-white font-primary max-w-[400px]">
-            Un enfoque estructurado para cada etapa de su inversión.
+            {t.process.leftTitle}
           </h3>
 
           <p className="text-sm md:text-base leading-[1.7] text-white opacity-80 max-w-[400px] font-primary">
-            Nuestro modelo de trabajo garantiza claridad legal y fiscal en cada paso del proceso de inversión en Argentina.
+            {t.process.leftBody}
           </p>
 
           {/* Stats */}
@@ -74,7 +76,7 @@ export function ProcessSection() {
                 98%
               </span>
               <span className="text-xs md:text-sm text-white opacity-60 font-primary">
-                Client Satisfaction
+                {t.process.satisfaction}
               </span>
             </div>
           </div>
@@ -89,13 +91,13 @@ export function ProcessSection() {
           <div className="flex items-center gap-2">
             <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
             <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-              CÓMO TRABAJAMOS
+              {t.process.label}
             </span>
           </div>
 
           {/* Title */}
           <h2 className="text-2xl md:text-[32px] font-bold text-[var(--color-text-primary)] font-primary">
-            Cómo Trabajamos
+            {t.process.title}
           </h2>
         </div>
 
@@ -104,23 +106,23 @@ export function ProcessSection() {
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <ProcessStep
               number="01"
-              title="Diagnóstico Inicial"
-              description="Evaluamos sus objetivos de inversión y realizamos un análisis preliminar del entorno legal y fiscal aplicable en Argentina."
+              title={t.process.step1Title}
+              description={t.process.step1Desc}
               isActive
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
             <ProcessStep
               number="02"
-              title="Estructuración Legal y Fiscal"
-              description="Desarrollamos la estructura societaria y fiscal óptima para su inversión, contemplando eficiencia, cumplimiento y escalabilidad."
+              title={t.process.step2Title}
+              description={t.process.step2Desc}
             />
           </div>
           <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '500ms', animationFillMode: 'both' }}>
             <ProcessStep
               number="03"
-              title="Implementación y Acompañamiento"
-              description="Ejecutamos el plan y gestionamos todos los trámites regulatorios, brindando soporte continuo durante la operación del proyecto."
+              title={t.process.step3Title}
+              description={t.process.step3Desc}
             />
           </div>
         </div>
