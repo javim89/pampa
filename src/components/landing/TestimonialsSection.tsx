@@ -1,133 +1,69 @@
-import { StarIcon } from "./Icons";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { useLanguage } from "../../context/LanguageContext";
 
-interface TestimonialCardProps {
-  quote: string;
-  authorName: string;
-  authorRole: string;
-  authorImage: string;
-  variant?: "light" | "dark";
-}
-
-function TestimonialCard({
-  quote,
-  authorName,
-  authorRole,
-  authorImage,
-  variant = "light",
-}: TestimonialCardProps) {
-  const isDark = variant === "dark";
-
-  return (
-    <div
-      className={`flex flex-col gap-5 md:gap-6 p-6 md:p-8 rounded-2xl card-hover ${
-        isDark
-          ? "bg-[var(--color-primary)]"
-          : "bg-white shadow-[0_4px_24px_rgba(0,0,0,0.03)]"
-      }`}
-    >
-      {/* Stars */}
-      <div className="flex gap-1">
-        {[...Array(5)].map((_, i) => (
-          <StarIcon key={i} className="text-[var(--color-accent)]" size={16} />
-        ))}
-      </div>
-
-      {/* Quote */}
-      <p
-        className={`text-sm md:text-base leading-[1.7] font-primary flex-1 ${
-          isDark
-            ? "text-white opacity-90"
-            : "text-[var(--color-text-secondary)]"
-        }`}
-      >
-        {quote}
-      </p>
-
-      {/* Author */}
-      <div className="flex items-center gap-3 md:gap-3.5">
-        <img
-          src={authorImage}
-          alt={authorName}
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
-        />
-        <div className="flex flex-col gap-0.5">
-          <span
-            className={`text-sm font-semibold font-primary ${
-              isDark ? "text-white" : "text-[var(--color-text-primary)]"
-            }`}
-          >
-            {authorName}
-          </span>
-          <span
-            className={`text-xs font-primary ${
-              isDark
-                ? "text-white opacity-60"
-                : "text-[var(--color-text-secondary)] opacity-60"
-            }`}
-          >
-            {authorRole}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function TestimonialsSection() {
-  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
   const { t } = useLanguage();
 
+  const cards = [
+    {
+      icon: (
+        <svg className="whyus-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <circle cx="20" cy="20" r="15" />
+          <path d="M10 26a10 10 0 0120 0" />
+          <circle cx="20" cy="14" r="4" />
+        </svg>
+      ),
+      h: t.whyUs.card1h,
+      p: t.whyUs.card1p,
+      delay: "",
+    },
+    {
+      icon: (
+        <svg className="whyus-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <path d="M20 5l13 6.5v7c0 7.5-5.5 13-13 14.5C12.5 31.5 7 26 7 18.5v-7z" />
+          <polyline points="13 20 18 25 27 14" />
+        </svg>
+      ),
+      h: t.whyUs.card2h,
+      p: t.whyUs.card2p,
+      delay: "reveal-delay-1",
+    },
+    {
+      icon: (
+        <svg className="whyus-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <path d="M20 5a15 15 0 100 30A15 15 0 0020 5z" />
+          <path d="M20 12v8l5 3" />
+        </svg>
+      ),
+      h: t.whyUs.card3h,
+      p: t.whyUs.card3p,
+      delay: "reveal-delay-2",
+    },
+  ];
+
   return (
-    <section
-      ref={ref}
-      id="testimonials"
-      className="flex flex-col items-center gap-8 md:gap-12 lg:gap-[60px] px-4 sm:px-8 lg:px-[120px] py-12 md:py-16 lg:py-[100px] bg-[var(--color-background-section)]"
-    >
-      {/* Header */}
-      <div className={`flex flex-col items-center gap-3 md:gap-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
-        {/* Label */}
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
-          <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-            {t.testimonials.label}
-          </span>
-          <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
+    <section className="p-section" id="nosotros-2" aria-labelledby="wu-heading">
+      <div className="container">
+        <div className="reveal">
+          <p className="section-tag">
+            <span className="section-tag-line" aria-hidden="true" />
+            {t.whyUs.tag}
+          </p>
+          <h2
+            className="section-heading"
+            id="wu-heading"
+            dangerouslySetInnerHTML={{ __html: t.whyUs.headingHtml }}
+          />
+          <p className="section-lead">{t.whyUs.lead}</p>
         </div>
 
-        {/* Title */}
-        <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold text-center text-[var(--color-text-primary)] font-primary">
-          {t.testimonials.title}
-        </h2>
-      </div>
-
-      {/* Testimonials Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
-        <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
-          <TestimonialCard
-            quote={t.testimonials.quote1}
-            authorName="Sarah Mitchell"
-            authorRole="CEO, TechVentures Inc"
-            authorImage="https://images.unsplash.com/photo-1603484255049-ea4d0fe04fd3?w=200&q=80"
-          />
-        </div>
-        <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-          <TestimonialCard
-            quote={t.testimonials.quote2}
-            authorName="Carlos Rodriguez"
-            authorRole="Managing Director, Global Invest"
-            authorImage="https://images.unsplash.com/photo-1659353216718-faccabf8b036?w=200&q=80"
-            variant="dark"
-          />
-        </div>
-        <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
-          <TestimonialCard
-            quote={t.testimonials.quote3}
-            authorName="Emma Thompson"
-            authorRole="CFO, Nordic Capital"
-            authorImage="https://images.unsplash.com/photo-1504791635568-fa4993808e0a?w=200&q=80"
-          />
+        <div className="whyus-cards">
+          {cards.map((card) => (
+            <div className={`whyus-card reveal ${card.delay}`} key={card.h}>
+              {card.icon}
+              <h4>{card.h}</h4>
+              <p>{card.p}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

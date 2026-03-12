@@ -1,129 +1,57 @@
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { useLanguage } from "../../context/LanguageContext";
 
-interface ProcessStepProps {
-  number: string;
-  title: string;
-  description: string;
-  isActive?: boolean;
-}
-
-function ProcessStep({
-  number,
-  title,
-  description,
-  isActive = false,
-}: ProcessStepProps) {
-  return (
-    <div className="flex gap-4 md:gap-5 group">
-      {/* Number Circle */}
-      <div
-        className={`flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${
-          isActive ? "bg-[var(--color-primary)]" : "bg-[#F0F2F5]"
-        }`}
-      >
-        <span
-          className={`text-xs md:text-sm font-semibold font-primary ${
-            isActive ? "text-white" : "text-[var(--color-text-primary)]"
-          }`}
-        >
-          {number}
-        </span>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col gap-1 md:gap-1.5 flex-1">
-        <h4 className="text-sm md:text-base font-semibold text-[var(--color-text-primary)] font-primary">
-          {title}
-        </h4>
-        <p className="text-xs md:text-sm leading-[1.6] text-[var(--color-text-secondary)] opacity-70 font-primary">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export function ProcessSection() {
-  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
   const { t } = useLanguage();
 
+  const steps = [
+    { num: "01", h: t.process.step1h, p: t.process.step1p, delay: "" },
+    { num: "02", h: t.process.step2h, p: t.process.step2p, delay: "reveal-delay-1" },
+    { num: "03", h: t.process.step3h, p: t.process.step3p, delay: "reveal-delay-2" },
+  ];
+
   return (
-    <section ref={ref} id="process" className="flex flex-col lg:flex-row min-h-[500px] lg:h-[600px] bg-white">
-      {/* Left Side - Image with Overlay */}
-      <div className={`relative w-full lg:w-[600px] h-[300px] sm:h-[400px] lg:h-full overflow-hidden bg-[var(--color-primary)] ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
-        {/* Background Image */}
-        <img
-          src="https://images.unsplash.com/photo-1765729003706-355ca161736d?w=800&q=80"
-          alt="Buenos Aires cityscape"
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        />
-
-        {/* Content Overlay */}
-        <div className="relative flex flex-col gap-6 md:gap-8 justify-center h-full px-4 sm:px-8 lg:px-[50px] py-8 md:py-12 lg:py-[60px]">
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.2] text-white font-primary max-w-[400px]">
-            {t.process.leftTitle}
-          </h3>
-
-          <p className="text-sm md:text-base leading-[1.7] text-white opacity-80 max-w-[400px] font-primary">
-            {t.process.leftBody}
+    <section className="p-section" id="proceso" aria-labelledby="proc-heading">
+      <div className="container">
+        <div className="reveal">
+          <p className="section-tag">
+            <span className="section-tag-line" aria-hidden="true" />
+            {t.process.tag}
           </p>
+          <h2
+            className="section-heading"
+            id="proc-heading"
+            dangerouslySetInnerHTML={{ __html: t.process.headingHtml }}
+          />
+        </div>
 
-          {/* Stats */}
-          <div className="flex gap-8 md:gap-10 pt-2 md:pt-5">
-            <div className="flex flex-col gap-1">
-              <span className="text-2xl md:text-[32px] font-bold text-white font-primary">
-                98%
-              </span>
-              <span className="text-xs md:text-sm text-white opacity-60 font-primary">
-                {t.process.satisfaction}
-              </span>
+        <div className="process-layout">
+          <div className="process-steps">
+            {steps.map((step, i) => (
+              <div className={`process-step reveal ${step.delay}`} key={step.num}>
+                <div className="step-marker">
+                  <div className="step-num-sq"><span>{step.num}</span></div>
+                  {i < steps.length - 1 && <div className="step-line" aria-hidden="true" />}
+                </div>
+                <div className="step-content">
+                  <h4>{step.h}</h4>
+                  <p>{step.p}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="process-visual reveal reveal-delay-1">
+            <div className="process-img-frame">
+              <img
+                src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=900&q=85&fit=crop&crop=center"
+                alt="Professional advisory environment"
+              />
+              <div className="process-img-overlay" aria-hidden="true" />
+              <div className="process-img-text">
+                <div className="process-img-title">{t.process.imgTitle}</div>
+                <p className="process-img-sub">{t.process.imgSub}</p>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Side - Process Steps */}
-      <div className={`flex flex-col gap-6 md:gap-8 flex-1 justify-center px-4 sm:px-8 lg:px-[60px] py-8 md:py-12 lg:py-[60px] ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-        {/* Header */}
-        <div className="flex flex-col gap-3 md:gap-4">
-          {/* Label */}
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
-            <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-              {t.process.label}
-            </span>
-          </div>
-
-          {/* Title */}
-          <h2 className="text-2xl md:text-[32px] font-bold text-[var(--color-text-primary)] font-primary">
-            {t.process.title}
-          </h2>
-        </div>
-
-        {/* Steps */}
-        <div className="flex flex-col gap-5 md:gap-6">
-          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
-            <ProcessStep
-              number="01"
-              title={t.process.step1Title}
-              description={t.process.step1Desc}
-              isActive
-            />
-          </div>
-          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
-            <ProcessStep
-              number="02"
-              title={t.process.step2Title}
-              description={t.process.step2Desc}
-            />
-          </div>
-          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '500ms', animationFillMode: 'both' }}>
-            <ProcessStep
-              number="03"
-              title={t.process.step3Title}
-              description={t.process.step3Desc}
-            />
           </div>
         </div>
       </div>

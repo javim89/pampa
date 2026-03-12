@@ -1,163 +1,82 @@
-import {
-  FileTextIcon,
-  CalculatorIcon,
-  BriefcaseIcon,
-  ArrowRightIcon,
-} from "./Icons";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { useLanguage } from "../../context/LanguageContext";
 
-interface ServiceCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  more: string;
-  variant?: "light" | "dark";
-  delay?: number;
-}
-
-function ServiceCard({
-  icon,
-  title,
-  description,
-  more,
-  variant = "light",
-  delay = 0,
-}: ServiceCardProps) {
-  const isDark = variant === "dark";
-
-  return (
-    <div
-      className={`group flex flex-col gap-5 md:gap-6 p-6 md:p-8 rounded-2xl card-hover ${
-        isDark
-          ? "bg-[var(--color-primary)]"
-          : "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
-      }`}
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      {/* Icon */}
-      <div
-        className={`flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-[14px] transition-transform duration-300 group-hover:scale-110 ${
-          isDark ? "bg-[#FFFFFF20]" : "bg-[var(--color-primary)]"
-        }`}
-      >
-        <div className={isDark ? "text-white" : "text-white"}>{icon}</div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col gap-2 md:gap-3 flex-1">
-        <h3
-          className={`text-lg md:text-xl font-semibold font-primary ${
-            isDark ? "text-white" : "text-[var(--color-text-primary)]"
-          }`}
-        >
-          {title}
-        </h3>
-        <p
-          className={`text-sm md:text-[15px] leading-[1.7] font-primary ${
-            isDark
-              ? "text-white opacity-80"
-              : "text-[var(--color-text-secondary)] opacity-70"
-          }`}
-        >
-          {description}
-        </p>
-      </div>
-
-      {/* Link */}
-      <a
-        href="#"
-        className={`flex items-center gap-1.5 text-sm font-medium font-primary hover:opacity-70 transition-opacity ${
-          isDark ? "text-white" : "text-[var(--color-text-primary)]"
-        }`}
-      >
-        {more}
-        <ArrowRightIcon size={14} className="link-arrow" />
-      </a>
-    </div>
-  );
-}
-
 export function ServicesSection() {
-  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
   const { t } = useLanguage();
 
+  const cards = [
+    {
+      num: "01",
+      icon: (
+        <svg className="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <circle cx="24" cy="24" r="18" />
+          <path d="M24 14v10l6 4M14 24h2M32 24h2" />
+        </svg>
+      ),
+      h: t.services.card1h,
+      p: t.services.card1p,
+      link: t.services.card1link,
+      delay: "reveal",
+    },
+    {
+      num: "02",
+      icon: (
+        <svg className="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <rect x="8" y="8" width="32" height="32" rx="2" />
+          <path d="M16 24h16M24 16v16" />
+        </svg>
+      ),
+      h: t.services.card2h,
+      p: t.services.card2p,
+      link: t.services.card2link,
+      delay: "reveal reveal-delay-1",
+    },
+    {
+      num: "03",
+      icon: (
+        <svg className="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <path d="M12 38V24M24 38V10M36 38V28" />
+          <line x1="8" y1="38" x2="40" y2="38" />
+        </svg>
+      ),
+      h: t.services.card3h,
+      p: t.services.card3p,
+      link: t.services.card3link,
+      delay: "reveal reveal-delay-2",
+    },
+  ];
+
   return (
-    <section
-      ref={ref}
-      id="services"
-      className="relative bg-[var(--color-background-section)] overflow-hidden"
-    >
-      {/* Decorative Circle */}
-      <div className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-[#1A2A3A05] right-[-100px] md:right-[-50px] top-[-50px] hidden sm:block animate-pulse-slow" />
+    <section className="p-section p-section-alt" id="servicios" aria-labelledby="svc-heading">
+      <div className="container">
+        <div className="services-header reveal">
+          <div>
+            <p className="section-tag">
+              <span className="section-tag-line" aria-hidden="true" />
+              {t.services.tag}
+            </p>
+            <h2
+              className="section-heading"
+              id="svc-heading"
+              dangerouslySetInnerHTML={{ __html: t.services.headingHtml }}
+            />
+          </div>
+          <p className="section-lead">{t.services.lead}</p>
+        </div>
 
-      {/* Content */}
-      <div className="relative flex flex-col gap-8 md:gap-12 px-4 sm:px-8 lg:px-[120px] py-12 md:py-16 lg:py-20 max-w-[1440px]">
-        {/* Header */}
-        <div className={`flex flex-col sm:flex-row sm:items-end justify-between gap-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationFillMode: 'both' }}>
-          <div className="flex flex-col gap-3 md:gap-4 lg:w-[500px]">
-            {/* Label */}
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-0.5 bg-[var(--color-primary)]" />
-              <span className="text-xs font-semibold tracking-[1.5px] text-[var(--color-text-primary)] font-primary">
-                {t.services.label}
-              </span>
+        <div className="services-cards">
+          {cards.map((card) => (
+            <div className={`svc-card ${card.delay}`} key={card.num}>
+              <span className="svc-card-watermark" aria-hidden="true">{card.num}</span>
+              <div className="svc-card-inner">
+                {card.icon}
+                <p className="svc-num-label">{card.num}</p>
+                <h3>{card.h}</h3>
+                <p>{card.p}</p>
+                <a href="#contacto" className="svc-card-link">{card.link}</a>
+              </div>
             </div>
-
-            {/* Title */}
-            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold leading-[1.2] text-[var(--color-text-primary)] font-primary">
-              {t.services.title}
-            </h2>
-          </div>
-
-          {/* View All Button - Hidden on mobile */}
-          <a
-            href="#"
-            className="group hidden sm:flex items-center gap-2 px-5 md:px-6 py-3 md:py-3.5 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all whitespace-nowrap"
-          >
-            {t.services.viewAll}
-            <ArrowRightIcon size={16} className="link-arrow" />
-          </a>
+          ))}
         </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
-            <ServiceCard
-              icon={<FileTextIcon size={22} />}
-              title={t.services.card1Title}
-              description={t.services.card1Desc}
-              more={t.services.more}
-            />
-          </div>
-          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-            <ServiceCard
-              icon={<CalculatorIcon size={22} />}
-              title={t.services.card2Title}
-              description={t.services.card2Desc}
-              more={t.services.more}
-              variant="dark"
-            />
-          </div>
-          <div className={isVisible ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
-            <ServiceCard
-              icon={<BriefcaseIcon size={22} />}
-              title={t.services.card3Title}
-              description={t.services.card3Desc}
-              more={t.services.more}
-            />
-          </div>
-        </div>
-
-        {/* View All Button - Mobile only */}
-        <a
-          href="#"
-          className={`group flex sm:hidden items-center justify-center gap-2 px-5 py-3 border border-[#1A2A3A20] rounded-lg text-sm font-medium text-[var(--color-text-primary)] font-primary btn-hover hover:bg-gray-50 transition-all ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-          style={{ animationDelay: '400ms', animationFillMode: 'both' }}
-        >
-          {t.services.viewAll}
-          <ArrowRightIcon size={16} className="link-arrow" />
-        </a>
       </div>
     </section>
   );
